@@ -1,0 +1,19 @@
+{
+  "name": "codevana",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodingNav/Codevana.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodingNav/Codevana/issues"
+  },
+  "homepage": "https://github.com/CodingNav/Codevana#readme"
+}
