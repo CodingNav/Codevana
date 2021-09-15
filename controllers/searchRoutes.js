@@ -26,4 +26,17 @@ router.get('/reddit', async (req, res) => {
     }
 });
 
+router.get('/stackoverflow', async (req, res) => {
+    try {
+        const key = process.env.STACK_API_KEY;
+        const search = req.query.search;
+        const apiRes = await axios.get(`https://api.stackexchange.com/2.3/search/advanced?key=${key}&order=desc&sort=activity&q=${search}&accepted=True&site=stackoverflow`);
+        const posts = apiRes.data;
+        console.log(posts);
+        res.json(posts);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;
