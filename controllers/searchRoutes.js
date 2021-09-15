@@ -12,7 +12,18 @@ router.get('/youtube', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
 
+router.get('/reddit', async (req, res) => {
+    try {
+        const search = req.query.search;
+        const apiRes = await axios.get(`https://www.reddit.com/r/coding/search.json?q=${search}`);
+        const posts = apiRes.data.data;
+        console.log(posts);
+        res.json(posts);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;
