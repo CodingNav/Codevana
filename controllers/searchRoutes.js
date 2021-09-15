@@ -1,13 +1,10 @@
 const router = require('express').Router();
 const axios = require('axios');
+const searchAPI = require('../util/searchAPI');
 
 router.get('/youtube', async (req, res) => {
     try {
-        const key = process.env.YOUTUBE_API_KEY;
-        const search = req.query.search;
-        const apiRes = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=${key}&q=${search}&part=snippet`);
-        const videos = apiRes.data;
-        console.log(videos);
+        const videos = searchAPI.searchYoutube(req.query.search);
         res.json(videos);
     } catch (err) {
         res.status(500).json(err);
@@ -16,10 +13,7 @@ router.get('/youtube', async (req, res) => {
 
 router.get('/reddit', async (req, res) => {
     try {
-        const search = req.query.search;
-        const apiRes = await axios.get(`https://www.reddit.com/r/coding/search.json?q=${search}`);
-        const posts = apiRes.data.data;
-        console.log(posts);
+        const posts = searchAPI.searchReddit(req.query.search);
         res.json(posts);
     } catch (err) {
         res.status(500).json(err);
@@ -28,11 +22,7 @@ router.get('/reddit', async (req, res) => {
 
 router.get('/stackoverflow', async (req, res) => {
     try {
-        const key = process.env.STACK_API_KEY;
-        const search = req.query.search;
-        const apiRes = await axios.get(`https://api.stackexchange.com/2.3/search/advanced?key=${key}&order=desc&sort=activity&q=${search}&accepted=True&site=stackoverflow`);
-        const posts = apiRes.data;
-        console.log(posts);
+        const posts = searchAPI.searchStackOverflow(req.query.search);
         res.json(posts);
     } catch (err) {
         res.status(500).json(err);
