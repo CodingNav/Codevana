@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const searchAPI = require('../util/searchAPI');
 
 router.get('/', async (req, res) => {
     res.render('homepage');
@@ -13,20 +14,27 @@ router.get('/signup', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-    res.render('search');
+    const videos = await searchAPI.searchYoutube(req.query.search);
+    const redditPosts = await searchAPI.searchReddit(req.query.search);
+    const stackPosts = await searchAPI.searchStackOverflow(req.query.search);
+    res.render('search', { videos, redditPosts, stackPosts });
 });
 
 router.get('/search/youtube', async (req, res) => {
-    res.render('youtube');
+    const videos = await searchAPI.searchYoutube(req.query.search);
+    res.render('youtube', { videos });
 });
 
 router.get('/search/reddit', async (req, res) => {
-    res.render('reddit');
+    const posts = await searchAPI.searchReddit(req.query.search);
+    res.render('reddit', { posts });
 });
 
 router.get('/search/stackoverflow', async (req, res) => {
-    res.render('stackoverflow');
+    const posts = await searchAPI.searchStackOverflow(req.query.search);
+    res.render('stackoverflow', { posts });
 });
+
 router.get('/favorites', async (req, res) => {
     res.render('favorites');
 });
