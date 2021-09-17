@@ -1,11 +1,21 @@
-<div class="row">
-  <button type="submit" class="btn" id="search"> More </button>
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">author</h6>
-      </div>
+<div class="container-fluid">
+
+  <h1>Reddit</h1>
+  <div class="row">
+    {{#each posts as |post|}}
+    <div class="col-lg-2">
+      <a href="https://www.reddit.com{{post.data.permalink}}">
+        <div class="card w-100 h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{post.data.title}}</h5>
+          </div>
+          <div class="card-footer">
+            <h6 class="card-subtitle mb-2 text-muted">Upvotes: {{post.data.ups}}</h6>
+          </div>
+        </div>
+      </a>
     </div>
+    {{/each}}
   </div>
+
 </div>
