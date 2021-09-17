@@ -1,20 +1,20 @@
 const axios = require('axios');
 
 module.exports = {
-    async searchYoutube(search) {
+    async searchYoutube(search, maxResults=50) {
         const key = process.env.YOUTUBE_API_KEY;
-        const apiRes = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=${key}&q=${search}&part=snippet`);
+        const apiRes = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=${key}&maxResults=${maxResults}&part=snippet&q=coding+${search}`);
         const videos = apiRes.data;
         return videos.items;
     },
-    async searchReddit(search) {
-        const apiRes = await axios.get(`https://www.reddit.com/r/coding/search.json?q=${search}`);
+    async searchReddit(search, limit=100) {
+        const apiRes = await axios.get(`https://www.reddit.com/r/coding/search.json?restrict_sr=true&limit=${limit}&q=${search}`);
         const posts = apiRes.data.data;
         return posts.children;
     },
-    async searchStackOverflow(search) {
+    async searchStackOverflow(search, pagesize=100) {
         const key = process.env.STACK_API_KEY;
-        const apiRes = await axios.get(`https://api.stackexchange.com/2.3/search/advanced?key=${key}&order=desc&sort=activity&q=${search}&accepted=True&site=stackoverflow`);
+        const apiRes = await axios.get(`https://api.stackexchange.com/2.3/search/advanced?key=${key}&order=desc&sort=activity&accepted=True&site=stackoverflow&pagesize=${pagesize}&q=${search}`);
         const posts = apiRes.data;
         return posts.items;
     }
