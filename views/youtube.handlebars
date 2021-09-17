@@ -1,11 +1,21 @@
-<div class="row">
-  <button type="submit" class="btn" id="search"> More </button>
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap" />
-      <div class="card-body">
-        <p class="card-text">title</p>
-      </div>
+<div class="container-fluid">
+  <h1>Youtube</h1>
+  <div class="row">
+    {{#each videos as |video|}}
+    <div class="col-lg-2">
+      <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">
+        <div class="card w-100 h-100">
+          <img class="card-img-top" src="{{video.snippet.thumbnails.high.url}}" alt="Card image cap" />
+          <div class="card-body">
+            <p class="card-text">{{video.snippet.title}}</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text">{{video.snippet.channelTitle}}</p>
+          </div>
+
+        </div>
+      </a>
     </div>
+    {{/each}}
   </div>
 </div>
