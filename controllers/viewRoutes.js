@@ -14,9 +14,9 @@ router.get('/signup', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-    const videos = await searchAPI.searchYoutube(req.query.search);
-    const redditPosts = await searchAPI.searchReddit(req.query.search);
-    const stackPosts = await searchAPI.searchStackOverflow(req.query.search);
+    const videos = await searchAPI.searchYoutube(req.query.search, 5);
+    const redditPosts = await searchAPI.searchReddit(req.query.search, 5);
+    const stackPosts = await searchAPI.searchStackOverflow(req.query.search, 5);
     res.render('search', { videos, redditPosts, stackPosts });
 });
 
