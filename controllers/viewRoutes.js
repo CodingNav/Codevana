@@ -14,25 +14,45 @@ router.get('/signup', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-    const videos = await searchAPI.searchYoutube(req.query.search, 5);
-    const redditPosts = await searchAPI.searchReddit(req.query.search, 5);
-    const stackPosts = await searchAPI.searchStackOverflow(req.query.search, 5);
-    res.render('search', { videos, redditPosts, stackPosts });
+    try {
+        const videos = await searchAPI.searchYoutube(req.query.search, 5);
+        const redditPosts = await searchAPI.searchReddit(req.query.search, 5);
+        const stackPosts = await searchAPI.searchStackOverflow(req.query.search, 5);
+        res.render('search', { videos, redditPosts, stackPosts });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
 });
 
 router.get('/search/youtube', async (req, res) => {
-    const videos = await searchAPI.searchYoutube(req.query.search);
-    res.render('youtube', { videos });
+    try {
+        const videos = await searchAPI.searchYoutube(req.query.search);
+        res.render('youtube', { videos });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
 });
 
 router.get('/search/reddit', async (req, res) => {
-    const posts = await searchAPI.searchReddit(req.query.search);
-    res.render('reddit', { posts });
+    try {
+        const posts = await searchAPI.searchReddit(req.query.search);
+        res.render('reddit', { posts });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
 });
 
 router.get('/search/stackoverflow', async (req, res) => {
-    const posts = await searchAPI.searchStackOverflow(req.query.search);
-    res.render('stackoverflow', { posts });
+    try {
+        const posts = await searchAPI.searchStackOverflow(req.query.search);
+        res.render('stackoverflow', { posts });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
 });
 
 router.get('/favorites', async (req, res) => {
