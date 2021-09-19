@@ -1,0 +1,59 @@
+<style scoped>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .editor {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 7px 7px rgba(0, 0, 0, .1), 0 -2px 3px rgba(0, 0, 0, .125);
+    }
+
+    .editor__code {
+        position: relative;
+        border: none;
+        flex-basis: 50%;
+    }
+
+    .editor__preview {
+        position: relative;
+        flex-basis: 50%;
+    }
+
+    .editor__code>*,
+    .editor__preview>* {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .editor {
+            flex-direction: row;
+        }
+    }
+</style>
+
+
+<div class="wrapper">
+    <div class="editor">
+        <div class="editor__code">
+            <div id="editorCode"></div>
+        </div>
+
+        <div class="editor__preview">
+            <iframe id="editorPreview" frameborder="0"></iframe>
+        </div>
+    </div>
+</div>
