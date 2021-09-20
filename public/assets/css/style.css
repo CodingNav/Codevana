@@ -8,12 +8,11 @@ nav {
 nav a {
     color: goldenrod;
     text-align: center;
-    text-decoration: underline;
     padding: 14px;
     margin: 20px 10px;
     font-size: 25px;
-    font-weight: bold;
-    text-shadow: 1px 1px grey;
+    text-decoration: underline;
+    text-shadow: 0.5px 0.5px grey;
 }
 
 body {
@@ -24,19 +23,22 @@ body {
     background-color: bisque;
 }
 
-h1,
-h2,
-h3 {
-    font-weight: 900;
-    font-weight: bold;
-    text-shadow: 2px 2px grey;
-}
-
 h1 {
     text-align: center;
     margin: 30px 0;
     color: goldenrod;
     text-decoration: underline;
+    font-weight: 900;
+    font-size: 5em;
+    text-shadow: 5px 5px grey;
+}
+
+h2 {
+    text-align: left;
+    margin: 30px 0;
+    color: goldenrod;
+    text-decoration: underline;
+    text-shadow: 0.5px 0.5px grey;
 }
 
 .btn {
@@ -96,6 +98,7 @@ h1 {
 .slide img {
     width: 800px;
     height: 500px;
+    display: flex;
 }
 
 
