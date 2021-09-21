@@ -6,14 +6,6 @@ router.get('/', async (req, res) => {
     res.render('homepage');
 });
 
-router.get('/login', async (req, res) => {
-    res.render('login');
-});
-
-router.get('/signup', async (req, res) => {
-    res.render('signup');
-});
-
 router.get('/search', async (req, res) => {
     try {
         const videos = await searchAPI.searchYoutube(req.query.search, 5);
