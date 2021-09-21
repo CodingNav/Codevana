@@ -29,6 +29,7 @@ h2 {
     color: goldenrod;
     text-shadow: 1.2px 1.2px grey;
     text-decoration: underline;
+    font-size: 40px;
 }
 
 h3 {
@@ -37,6 +38,7 @@ h3 {
     color: goldenrod;
     text-shadow: 1.2px 1.2px grey;
     text-decoration: underline;
+    font-size: 50px;
 }
 
 nav {
