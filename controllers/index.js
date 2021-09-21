@@ -11,6 +11,6 @@ router.use('/', viewRoutes);
 router.use("/login", loginRoutes);
 router.use("/signup", signupRoutes);
 router.use("/logout", logoutRoutes);
-router.use('/api/searchAPI.', searchRoutes);
+router.use('/api/search.', searchRoutes);
 
 module.exports = router;
