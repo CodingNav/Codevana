@@ -17,7 +17,7 @@ body {
 h1 {
     text-align: center;
     margin: 30px 0;
-    color: goldenrod;
+    color: rgb(233, 137, 13);
     font-weight: 900;
     font-size: 5em;
     text-shadow: 5px 5px grey;
@@ -26,26 +26,17 @@ h1 {
 h2 {
     text-align: left;
     margin: 30px 0;
-    color: goldenrod;
+    color: rgb(233, 137, 13);
     text-shadow: 1.2px 1.2px grey;
     text-decoration: underline;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 h3 {
     text-align: center;
     margin: 30px 0;
-    color: goldenrod;
-    text-shadow: 1.2px 1.2px grey;
-    text-decoration: underline;
-    font-size: 50px;
-}
-
-h3 {
-    text-align: center;
-    margin: 30px 0;
-    color: goldenrod;
-    text-shadow: 1.2px 1.2px grey;
+    color: rgb(233, 137, 13);
+    text-shadow: 2px 2px grey;
     text-decoration: underline;
     font-size: 50px;
 }
@@ -73,7 +64,7 @@ nav a {
     font-weight: 400;
     text-align: center;
     cursor: pointer;
-    padding: 0.375rem 2rem;
+    padding: 0.375rem 1.5rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 1rem;
@@ -111,7 +102,7 @@ nav a {
     font-weight: 400;
     text-align: center;
     cursor: pointer;
-    padding: 0.375rem 0.75rem;
+    padding: 0.375rem 1.3rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 1rem;
