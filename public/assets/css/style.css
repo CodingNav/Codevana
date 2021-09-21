@@ -41,6 +41,15 @@ h3 {
     font-size: 50px;
 }
 
+h3 {
+    text-align: center;
+    margin: 30px 0;
+    color: goldenrod;
+    text-shadow: 1.2px 1.2px grey;
+    text-decoration: underline;
+    font-size: 50px;
+}
+
 nav {
     justify-content: right;
     flex: 3 0 0;

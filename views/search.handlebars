@@ -1,6 +1,7 @@
 <div class="container-fluid">
 
   <!-- Youtube -->
+  {{#if videos}}
   <h2>Youtube</h2>
   <div class="row">
     {{#each videos as |video|}}
@@ -33,8 +34,10 @@
       >More</button>
     </div>
   </div>
+  {{/if}}
 
   <!-- Stack Overflow -->
+  {{#if stackPosts}}
   <h2>Stack Overflow</h2>
   <div class="row">
     {{#each stackPosts as |post|}}
@@ -60,8 +63,10 @@
       >More</button>
     </div>
   </div>
+  {{/if}}
 
   <!-- Reddit -->
+  {{#if redditPosts}}
   <h2>Reddit</h2>
   <div class="row">
     {{#each redditPosts as |post|}}
@@ -87,5 +92,6 @@
       >More</button>
     </div>
   </div>
+  {{/if}}
 
 </div>
