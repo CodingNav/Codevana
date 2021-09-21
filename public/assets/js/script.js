@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
+const searchForm = document.querySelector('.search-form');
 const searchInput = document.querySelector('.search-input');
-const searchButton = document.querySelector('.search-btn');
 
 // Search bar functionality
-if (searchButton != null) {
+if (searchForm != null) {
     // click event listener
-    searchButton.addEventListener('click', function (e) {
+    searchForm.addEventListener('submit', function (e) {
         e.preventDefault();
         const searchValue = searchInput.value;
-        if (searchValue != null) {
+        if (searchValue != "") {
         // changes url to go to search results page
         window.location.assign("/search?search=" + searchValue);
         }
