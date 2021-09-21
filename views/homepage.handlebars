@@ -1,4 +1,4 @@
-<body1>
+<body>
   <!--image slider start-->
   <div class="slider">
     <div class="slides">
@@ -22,7 +22,7 @@
         <img src="/assets/img/css.png" alt="" />
       </div>
       <!--slide images end-->
-      {{!-- <!--automatic nav start-->
+      <!--automatic nav start-->
       <div class="navigation-auto">
         <div class="auto-btn1"></div>
         <div class="auto-btn2"></div>
@@ -39,5 +39,11 @@
     <label for="radio3" class="manual-btn"></label>
     <label for="radio4" class="manual-btn"></label>
     <!--manual nav end-->
-  </div> --}}
-</body1>
+  </div>
+
+  <script type="text/javascript">
+    var counter = 1; setInterval(function(){ document.getElementById('radio' +
+    counter).checked = true; counter++; if(counter > 4){ counter = 1; } },
+    5000);
+  </script>
+</body>
