@@ -6,7 +6,6 @@ const routes = require('./controllers');
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./config/connection");
-const controllers = require("./controllers");
 
 require('dotenv').config();
 
@@ -43,14 +42,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Sets up the routes
-app.use(controllers);
-
 app.use(routes);
 
-app.listen(PORT, () => console.log('Now listening on http://localhost:3001'));
-
 // Starts the server to begin listening with sequelize for db connection
-//force start should be false if using 'npm run seed' to populate and create db as it will recreate tables each server reload
+// force start should be false if using 'npm run seed' to populate and create db as it will recreate tables each server reload
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log("Now listening: " + PORT));
+    app.listen(PORT, () => console.log('Now listening on http://localhost:3001'));
 });
