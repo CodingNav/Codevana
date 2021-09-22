@@ -9,8 +9,13 @@
           <div class="card-body">
             <h5 class="card-title">{{post.data.title}}</h5>
           </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">Likes: {{post.data.ups}}</li>
+          </ul>
           <div class="card-footer">
-            <h6 class="card-subtitle mb-2 text-muted">Upvotes: {{post.data.ups}}</h6>
+            <div class="card-text text-center">
+              <i class="far fa-star"></i>
+            </div>
           </div>
         </div>
       </a>

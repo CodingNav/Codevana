@@ -2,99 +2,90 @@
 
   <!-- Youtube -->
   {{#if videos}}
-    <h2>Youtube</h2>
-    <div class="row">
-      {{#each videos as |video|}}
-        <div class="col-lg-2">
-          <a
-            href="https://www.youtube.com/watch?v={{video.id.videoId}}"
-            target="_blank"
-          >
-            <div class="card w-100 h-100">
-              <img
-                class="card-img-top"
-                src="{{video.snippet.thumbnails.high.url}}"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <p class="card-text">{{video.snippet.title}}</p>
-              </div>
-              <div class="card-footer">
-                <p class="card-text">{{video.snippet.channelTitle}}</p>
-              </div>
+  <h2>Youtube</h2>
+  <div class="row">
+    {{#each videos as |video|}}
+    <div class="col-lg-2">
+      <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
+        <div class="card w-100 h-100">
+          <img class="card-img-top" src="{{video.snippet.thumbnails.high.url}}" alt="Card image cap" />
+          <div class="card-body">
+            <p class="card-text">{{video.snippet.title}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">{{video.snippet.channelTitle}}</li>
+          </ul>
+          <div class="card-footer">
+            <div class="card-text text-center">
+              <i class="far fa-star"></i>
             </div>
-          </a>
+          </div>
         </div>
-      {{/each}}
-      <div class="col-lg-2">
-        <button
-          type="submit"
-          class="btn h-100 moreBtn"
-          data-source="youtube"
-        >More</button>
-      </div>
+      </a>
     </div>
+    {{/each}}
+    <div class="col-lg-2">
+      <button type="submit" class="btn h-100 moreBtn" data-source="youtube">More</button>
+    </div>
+  </div>
   {{/if}}
 
   <!-- Stack Overflow -->
   {{#if stackPosts}}
-    <h2>Stack Overflow</h2>
-    <div class="row">
-      {{#each stackPosts as |post|}}
-        <div class="col-lg-2">
-          <a href="{{post.link}}" target="_blank">
-            <div class="card w-100 h-100">
-              <div class="card-body">
-                <h5 class="card-title">{{post.title}}</h5>
-              </div>
-              <div class="card-footer">
-                <h6 class="card-subtitle mb-2 text-muted">Upvotes:
-                  {{post.score}}</h6>
-              </div>
+  <h2>Stack Overflow</h2>
+  <div class="row">
+    {{#each stackPosts as |post|}}
+    <div class="col-lg-2">
+      <a href="{{post.link}}" target="_blank">
+        <div class="card w-100 h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">Likes: {{post.score}}</li>
+          </ul>
+          <div class="card-footer">
+            <div class="card-text text-center">
+              <i class="far fa-star"></i>
             </div>
-          </a>
+          </div>
         </div>
-      {{/each}}
-      <div class="col-2">
-        <button
-          type="submit"
-          class="btn h-100 moreBtn"
-          data-source="stackoverflow"
-        >More</button>
-      </div>
+      </a>
     </div>
+    {{/each}}
+    <div class="col-2">
+      <button type="submit" class="btn h-100 moreBtn" data-source="stackoverflow">More</button>
+    </div>
+  </div>
   {{/if}}
 
   <!-- Reddit -->
   {{#if redditPosts}}
-    <h2>Reddit</h2>
-    <div class="row">
-      {{#each redditPosts as |post|}}
-        <div class="col-lg-2">
-          <a
-            href="https://www.reddit.com{{post.data.permalink}}"
-            target="_blank"
-          >
-            <div class="card w-100 h-100">
-              <div class="card-body">
-                <h5 class="card-title">{{post.data.title}}</h5>
-              </div>
-              <div class="card-footer">
-                <h6 class="card-subtitle mb-2 text-muted">Upvotes:
-                  {{post.data.ups}}</h6>
-              </div>
+  <h2>Reddit</h2>
+  <div class="row">
+    {{#each redditPosts as |post|}}
+    <div class="col-lg-2">
+      <a href="https://www.reddit.com{{post.data.permalink}}" target="_blank">
+        <div class="card w-100 h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{post.data.title}}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">Likes: {{post.data.ups}}</li>
+          </ul>
+          <div class="card-footer">
+            <div class="card-text text-center">
+              <i class="far fa-star"></i>
             </div>
-          </a>
+          </div>
         </div>
-      {{/each}}
-      <div class="col-lg-2">
-        <button
-          type="submit"
-          class="btn h-100 moreBtn"
-          data-source="reddit"
-        >More</button>
-      </div>
+      </a>
     </div>
+    {{/each}}
+    <div class="col-lg-2">
+      <button type="submit" class="btn h-100 moreBtn" data-source="reddit">More</button>
+    </div>
+  </div>
   {{/if}}
 
 </div>
