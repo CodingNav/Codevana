@@ -1,16 +1,9 @@
 const router = require('express').Router();
 const searchAPI = require('../util/searchAPI');
+const { Favorite } = require('../models');
 
 router.get('/', async (req, res) => {
     res.render('homepage');
-});
-
-router.get('/login', async (req, res) => {
-    res.render('login');
-});
-
-router.get('/signup', async (req, res) => {
-    res.render('signup');
 });
 
 router.get('/search', async (req, res) => {
@@ -55,7 +48,15 @@ router.get('/search/stackoverflow', async (req, res) => {
 });
 
 router.get('/favorites', async (req, res) => {
-    res.render('favorites');
+    try {
+        let favoriteData = await Favorite.findAll({ where: { user_id: req.session.user_id } });
+        favoriteData = favoriteData.map((obj) => {
+            return obj.get();
+        })
+        res.render('favorites', { favoriteData });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.get('/code-editor', async (req, res) => {

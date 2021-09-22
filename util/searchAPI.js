@@ -7,22 +7,19 @@ module.exports = {
             console.log(err);
             return null
         });
-        if (apiRes == null) {
-            return null;
-        };
-        const videos = apiRes.data;
-        return videos.items;
+        // if (apiRes == null) {
+        //     return null;
+        // };
+        // const videos = apiRes.data;
+        // return videos.items;
+        return apiRes ? apiRes.data.items : null;
     },
     async searchReddit(search, limit = 100) {
         const apiRes = await axios.get(`https://www.reddit.com/r/coding/search.json?restrict_sr=true&limit=${limit}&q=${search}`).catch(err => {
             console.log(err);
             return null
         });
-        if (apiRes == null) {
-            return null;
-        };
-        const posts = apiRes.data.data;
-        return posts.children;
+        return apiRes ? apiRes.data.data.children : null;
     },
     async searchStackOverflow(search, pagesize = 100) {
         const key = process.env.STACK_API_KEY;
@@ -30,10 +27,6 @@ module.exports = {
             console.log(err);
             return null
         });
-        if (apiRes == null) {
-            return null;
-        };
-        const posts = apiRes.data;
-        return posts.items;
+        return apiRes ? apiRes.data.items : null;
     }
 };

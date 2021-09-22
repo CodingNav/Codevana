@@ -1,16 +1,20 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-inner-declarations */
+const searchForm = document.querySelector('.search-form');
 const searchInput = document.querySelector('.search-input');
-const searchButton = document.querySelector('.search-btn');
 
 // Search bar functionality
-if (searchButton != null) {
+if (searchForm != null) {
     // click event listener
-    searchButton.addEventListener('click', function (e) {
+    searchForm.addEventListener('submit', function (e) {
         e.preventDefault();
         const searchValue = searchInput.value;
+        if (searchValue != "") {
         // changes url to go to search results page
         window.location.assign("/search?search=" + searchValue);
+        }
     });
-};
+}
 
 // Search page more buttons functionality
 if (window.location.pathname == "/search") {
@@ -25,7 +29,7 @@ if (window.location.pathname == "/search") {
             window.location.assign("/search/" + moreBtn.dataset.source + window.location.search);
         });
     });
-};
+}
 
 // Following is to run the code-editor
 if (window.location.pathname == "/code-editor") {
@@ -73,7 +77,7 @@ if (window.location.pathname == "/code-editor") {
     });
 
     window.MonacoEnvironment = {
-        getWorkerUrl: function (workerId, label) {
+        getWorkerUrl: function () {
             return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
             self.MonacoEnvironment = {
               baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor/min/'

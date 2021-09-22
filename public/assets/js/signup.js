@@ -2,9 +2,9 @@
 const signupFormHandler = async (event) => {
     event.preventDefault();
 
-    const username = document.querySelector(".username-input").value.trim();
-    const email = document.querySelector(".email-input").value.trim();
-    const password = document.querySelector(".password-input").value.trim();
+    const username = document.querySelector("#username").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#pass").value.trim();
     //new accounts by default are not admins
     const is_admin = false;
 
@@ -31,5 +31,5 @@ const signupFormHandler = async (event) => {
 
 //add event listeners
 document
-    .querySelector(".signup-button")
+    .querySelector("#signup")
     .addEventListener("click", signupFormHandler);

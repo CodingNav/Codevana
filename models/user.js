@@ -36,11 +36,7 @@ User.init(
             validate: {
                 len: [6],
             },
-        },
-        isAdmin: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
+        }
     },
     {
         //Hooks (also known as lifecycle events), are functions which are called before and after calls in sequelize are executed.
