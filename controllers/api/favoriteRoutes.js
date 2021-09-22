@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const favoriteData = await Favorite.destroy({ where: {user_id: req.session.user_id, id: req.params.id}})
+        const favoriteData = await Favorite.destroy({ where: {user_id: req.session.user_id, id: req.params.id}});
         res.status(200).json(favoriteData);
     } catch (err) {
         res.status(400).json(err);

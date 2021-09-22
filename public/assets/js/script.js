@@ -107,6 +107,7 @@ if (window.location.pathname == "/Favorites") {
                     headers: { "Content-Type": "application/json" },
                 });
                 if (response.ok) {
+                    favoriteBtn.parentElement.parentElement.parentElement.remove();
                     favoriteBtn.classList.remove('fas');
                     favoriteBtn.classList.add('far');
                 } 
