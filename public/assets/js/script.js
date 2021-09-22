@@ -39,16 +39,20 @@ if (window.location.pathname == "/search") {
         const channel = favoriteBtn.dataset.channel;
         const likes = favoriteBtn.dataset.likes;
 
-        favoriteBtn.addEventListener('click', function (e) {
+        favoriteBtn.addEventListener('click', async function (e) {
             e.preventDefault();
             if (favoriteBtn.classList.contains('far')) {
                 const response = await fetch("/api/favorite", {
                     method: "POST",
                     body: { source, title, url, image, channel, likes },
-
+                    headers: { "Content-Type": "application/json" },
                 })
-                favoriteBtn.classList.remove('far');
-                favoriteBtn.classList.add('fas');
+                if (response.ok) {
+                    favoriteBtn.classList.remove('far');
+                    favoriteBtn.classList.add('fas');
+                } else {
+                    console.log("Could not add to favorites");
+                }
             }
             else {
                 favoriteBtn.classList.remove('fas');
