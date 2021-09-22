@@ -10,8 +10,8 @@ if (searchForm != null) {
         e.preventDefault();
         const searchValue = searchInput.value;
         if (searchValue != "") {
-        // changes url to go to search results page
-        window.location.assign("/search?search=" + searchValue);
+            // changes url to go to search results page
+            window.location.assign("/search?search=" + searchValue);
         }
     });
 }
@@ -19,6 +19,7 @@ if (searchForm != null) {
 // Search page more buttons functionality
 if (window.location.pathname == "/search") {
     const moreBtns = document.querySelectorAll('.moreBtn');
+    const favoriteBtns = document.querySelectorAll('.fa-star');
 
     // loops through the array elements with the class of moreBtn
     moreBtns.forEach((moreBtn) => {
@@ -27,6 +28,19 @@ if (window.location.pathname == "/search") {
             e.preventDefault();
             // changes url to go to the specific sources page
             window.location.assign("/search/" + moreBtn.dataset.source + window.location.search);
+        });
+    });
+    favoriteBtns.forEach((favoriteBtn) => {
+        favoriteBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (favoriteBtn.classList.contains('far')) {
+                favoriteBtn.classList.remove('far');
+                favoriteBtn.classList.add('fas');
+            }
+            else {
+                favoriteBtn.classList.remove('fas');
+                favoriteBtn.classList.add('far');
+            }
         });
     });
 }
