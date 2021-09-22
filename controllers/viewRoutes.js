@@ -52,8 +52,17 @@ router.get('/favorites', async (req, res) => {
         let favoriteData = await Favorite.findAll({ where: { user_id: req.session.user_id } });
         favoriteData = favoriteData.map((obj) => {
             return obj.get();
-        })
-        res.render('favorites', { favoriteData });
+        });
+        const videos = favoriteData.filter((obj) => {
+            return obj.source == "youtube";
+        });
+        const stackPosts = favoriteData.filter((obj) => {
+            return obj.source == "stackoverflow";
+        });
+        const redditPosts = favoriteData.filter((obj) => {
+            return obj.source == "reddit";
+        });
+        res.render('favorites', { videos, stackPosts, redditPosts});
     } catch (err) {
         res.status(500).json(err);
     }
