@@ -3,20 +3,20 @@
   <!-- Youtube -->
   <h2>Youtube</h2>
   <div class="row">
-    {{#each videos as |favorite|}}
+    {{#each videos as |video|}}
     <div class="col-lg-2">
-      <a href="https://www.youtube.com/watch?v={{favorite.url}}" target="_blank">
+      <a href="https://www.youtube.com/watch?v={{video.url}}" target="_blank">
         <div class="card w-100 h-100">
-          <img class="card-img-top" src="{{favorite.image}}" alt="Card image cap" />
+          <img class="card-img-top" src="{{video.image}}" alt="Card image cap" />
           <div class="card-body">
-            <p class="card-text">{{favorite.title}}</p>
+            <p class="card-text">{{video.title}}</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center">{{favorite.channel}}</li>
+            <li class="list-group-item text-center">{{video.channel}}</li>
           </ul>
           <div class="card-footer">
             <div class="card-text text-center">
-              <i class="fas fa-star" data-favid="{{favorite.id}}" data-source="youtube" data-url="https://www.youtube.com/watch?v={{favorite.url}}" data-image="{{favorite.image}}" data-title="{{favorite.title}}" data-channel="{{favorite.channel}}"></i>
+              <i class="fas fa-star" data-favid="{{video.id}}" data-source="youtube" data-url="https://www.youtube.com/watch?v={{video.url}}" data-image="{{video.image}}" data-title="{{video.title}}" data-channel="{{video.channel}}"></i>
             </div>
           </div>
         </div>
@@ -30,17 +30,17 @@
   <div class="row">
     {{#each stackPosts as |post|}}
     <div class="col-lg-2">
-      <a href="{{post.link}}" target="_blank">
+      <a href="{{post.url}}" target="_blank">
         <div class="card w-100 h-100">
           <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center">Likes: {{post.score}}</li>
+            <li class="list-group-item text-center">Likes: {{post.likes}}</li>
           </ul>
           <div class="card-footer">
             <div class="card-text text-center">
-              <i class="fas fa-star" data-source="stackoverflow" data-url="{{post.link}}" data-title="{{post.title}}" data-likes="{{post.score}}"></i>
+              <i class="fas fa-star" data-source="stackoverflow" data-url="{{post.url}}" data-title="{{post.title}}" data-likes="{{post.likes}}"></i>
             </div>
           </div>
         </div>
@@ -54,17 +54,17 @@
   <div class="row">
     {{#each redditPosts as |post|}}
     <div class="col-lg-2">
-      <a href="https://www.reddit.com{{post.data.permalink}}" target="_blank">
+      <a href="https://www.reddit.com{{post.url}}" target="_blank">
         <div class="card w-100 h-100">
           <div class="card-body">
-            <h5 class="card-title">{{post.data.title}}</h5>
+            <h5 class="card-title">{{post.title}}</h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center">Likes: {{post.data.ups}}</li>
+            <li class="list-group-item text-center">Likes: {{post.likes}}</li>
           </ul>
           <div class="card-footer">
             <div class="card-text text-center">
-              <i class="fas fa-star" data-source="reddit" data-url="{{post.data.permalink}}" data-title="{{post.data.title}}" data-likes="{{post.data.up}}"></i>
+              <i class="fas fa-star" data-source="reddit" data-url="{{post.url}}" data-title="{{post.title}}" data-likes="{{post.likes}}"></i>
             </div>
           </div>
         </div>
