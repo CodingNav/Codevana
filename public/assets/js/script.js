@@ -30,11 +30,23 @@ if (window.location.pathname == "/search") {
             window.location.assign("/search/" + moreBtn.dataset.source + window.location.search);
         });
     });
-    
+
     favoriteBtns.forEach((favoriteBtn) => {
+        const source = favoriteBtn.dataset.src;
+        const title = favoriteBtn.dataset.title;
+        const url = favoriteBtn.dataset.url;
+        const image = favoriteBtn.dataset.image;
+        const channel = favoriteBtn.dataset.channel;
+        const likes = favoriteBtn.dataset.likes;
+
         favoriteBtn.addEventListener('click', function (e) {
             e.preventDefault();
             if (favoriteBtn.classList.contains('far')) {
+                const response = await fetch("/api/favorite", {
+                    method: "POST",
+                    body: { source, title, url, image, channel, likes },
+
+                })
                 favoriteBtn.classList.remove('far');
                 favoriteBtn.classList.add('fas');
             }

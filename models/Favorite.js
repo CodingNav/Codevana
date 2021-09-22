@@ -31,7 +31,7 @@ Favorite.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        upvotes: {
+        likes: {
             type: DataTypes.INTEGER,
             allowNull: true,
         },
