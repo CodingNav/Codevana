@@ -46,9 +46,8 @@ if (window.location.pathname == "/search") {
                     method: "POST",
                     body: JSON.stringify({ source, title, url, image, channel, likes }),
                     headers: { "Content-Type": "application/json" },
-                })
+                });
                 if (response.ok) {
-                    console.log(await response.json());
                     favoriteBtn.classList.remove('far');
                     favoriteBtn.classList.add('fas');
                 } 
@@ -57,13 +56,67 @@ if (window.location.pathname == "/search") {
                 }
             }
             else {
-                favoriteBtn.classList.remove('fas');
-                favoriteBtn.classList.add('far');
+                const id = favoriteBtn.dataset.favId;
+                const response = await fetch("/api/favorite/" + id, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                });
+                if (response.ok) {
+                    favoriteBtn.classList.remove('fas');
+                    favoriteBtn.classList.add('far');
+                } 
+                else {
+                    console.log("Could not delete favorite");
+                }
             }
         });
     });
 }
 
+if (window.location.pathname == "/Favorites") {
+    const favoriteBtns = document.querySelectorAll('.fa-star');
+
+    favoriteBtns.forEach((favoriteBtn) => {
+        const source = favoriteBtn.dataset.source;
+        const title = favoriteBtn.dataset.title;
+        const url = favoriteBtn.dataset.url;
+        const image = favoriteBtn.dataset.image;
+        const channel = favoriteBtn.dataset.channel;
+        const likes = favoriteBtn.dataset.likes;
+
+        favoriteBtn.addEventListener('click', async function (e) {
+            e.preventDefault();
+            if (favoriteBtn.classList.contains('far')) {
+                const response = await fetch("/api/favorite", {
+                    method: "POST",
+                    body: JSON.stringify({ source, title, url, image, channel, likes }),
+                    headers: { "Content-Type": "application/json" },
+                });
+                if (response.ok) {
+                    favoriteBtn.classList.remove('far');
+                    favoriteBtn.classList.add('fas');
+                } 
+                else {
+                    console.log("Could not add to favorites");
+                }
+            }
+            else {
+                const id = favoriteBtn.dataset.favid;
+                const response = await fetch("/api/favorite/" + id, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                });
+                if (response.ok) {
+                    favoriteBtn.classList.remove('fas');
+                    favoriteBtn.classList.add('far');
+                } 
+                else {
+                    console.log("Could not delete favorite");
+                }
+            }
+        });
+    });
+}
 // Following is to run the code-editor
 if (window.location.pathname == "/code-editor") {
     // Initial data
