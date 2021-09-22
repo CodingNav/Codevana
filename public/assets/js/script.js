@@ -30,6 +30,7 @@ if (window.location.pathname == "/search") {
             window.location.assign("/search/" + moreBtn.dataset.source + window.location.search);
         });
     });
+    
     favoriteBtns.forEach((favoriteBtn) => {
         favoriteBtn.addEventListener('click', function (e) {
             e.preventDefault();
