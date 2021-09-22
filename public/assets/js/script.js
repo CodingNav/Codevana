@@ -32,7 +32,7 @@ if (window.location.pathname == "/search") {
     });
 
     favoriteBtns.forEach((favoriteBtn) => {
-        const source = favoriteBtn.dataset.src;
+        const source = favoriteBtn.dataset.source;
         const title = favoriteBtn.dataset.title;
         const url = favoriteBtn.dataset.url;
         const image = favoriteBtn.dataset.image;
@@ -44,13 +44,15 @@ if (window.location.pathname == "/search") {
             if (favoriteBtn.classList.contains('far')) {
                 const response = await fetch("/api/favorite", {
                     method: "POST",
-                    body: { source, title, url, image, channel, likes },
+                    body: JSON.stringify({ source, title, url, image, channel, likes }),
                     headers: { "Content-Type": "application/json" },
                 })
                 if (response.ok) {
+                    console.log(await response.json());
                     favoriteBtn.classList.remove('far');
                     favoriteBtn.classList.add('fas');
-                } else {
+                } 
+                else {
                     console.log("Could not add to favorites");
                 }
             }

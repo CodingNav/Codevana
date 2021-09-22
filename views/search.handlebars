@@ -17,7 +17,7 @@
           </ul>
           <div class="card-footer">
             <div class="card-text text-center">
-              <i class="far fa-star"></i>
+              <i class="far fa-star" data-source="youtube" data-url="https://www.youtube.com/watch?v={{video.id.videoId}}" data-image="{{video.snippet.thumbnails.high.url}}" data-title="{{video.snippet.title}}" data-channel="{{video.snippet.channelTitle}}"></i>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
           </ul>
           <div class="card-footer">
             <div class="card-text text-center">
-              <i class="far fa-star"></i>
+              <i class="far fa-star" data-source="stackoverflow" data-url="{{post.link}}" data-title="{{post.title}}" data-likes="{{post.score}}"></i>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
           </ul>
           <div class="card-footer">
             <div class="card-text text-center">
-              <i class="far fa-star"></i>
+              <i class="far fa-star" data-source="reddit" data-url="{{post.data.permalink}}" data-title="{{post.data.title}}" data-likes="{{post.data.up}}"></i>
             </div>
           </div>
         </div>
