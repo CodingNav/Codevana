@@ -14,7 +14,7 @@
           </ul>
           <div class="card-footer">
             <div class="card-text text-center">
-              <i class="far fa-star" data-source="reddit" data-url="https://www.reddit.com{{post.data.permalink}}" data-title="{{post.data.title}}" data-likes="{{post.data.ups}}"></i>
+              <i class="{{#if post.favoriteId}}fas{{else}}far{{/if}} fa-star" data-favid="{{post.favoriteId}}" data-source="reddit" data-url="https://www.reddit.com{{post.data.permalink}}" data-title="{{post.data.title}}" data-likes="{{post.data.ups}}"></i>
             </div>
           </div>
         </div>
