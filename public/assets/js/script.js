@@ -53,7 +53,7 @@ if (window.location.pathname.indexOf("/search") > -1 || window.location.pathname
                 if (response.ok) {
                     favoriteBtn.classList.remove('far');
                     favoriteBtn.classList.add('fas');
-                } 
+                }
                 else {
                     console.log("Could not add to favorites");
                 }
@@ -65,10 +65,12 @@ if (window.location.pathname.indexOf("/search") > -1 || window.location.pathname
                     headers: { "Content-Type": "application/json" },
                 });
                 if (response.ok) {
-                    favoriteBtn.parentElement.parentElement.parentElement.remove();
+                    if (window.location.pathname == "/favorites") {
+                        favoriteBtn.parentElement.parentElement.parentElement.remove();
+                    }
                     favoriteBtn.classList.remove('fas');
                     favoriteBtn.classList.add('far');
-                } 
+                }
                 else {
                     console.log("Could not delete favorite");
                 }
