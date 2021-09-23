@@ -10,8 +10,13 @@
           <div class="card-body">
             <p class="card-text">{{video.snippet.title}}</p>
           </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">{{video.snippet.channelTitle}}</li>
+          </ul>
           <div class="card-footer">
-            <p class="card-text">{{video.snippet.channelTitle}}</p>
+            <div class="card-text text-center">
+              <i class="{{#if video.favoriteId}}fas{{else}}far{{/if}} fa-star" data-favid="{{video.favoriteId}}" data-source="youtube" data-url="https://www.youtube.com/watch?v={{video.id.videoId}}" data-image="{{video.snippet.thumbnails.high.url}}" data-title="{{video.snippet.title}}" data-channel="{{video.snippet.channelTitle}}"></i>
+            </div>
           </div>
         </div>
       </a>

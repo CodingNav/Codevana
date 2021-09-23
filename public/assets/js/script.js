@@ -10,8 +10,8 @@ if (searchForm != null) {
         e.preventDefault();
         const searchValue = searchInput.value;
         if (searchValue != "") {
-        // changes url to go to search results page
-        window.location.assign("/search?search=" + searchValue);
+            // changes url to go to search results page
+            window.location.assign("/search?search=" + searchValue);
         }
     });
 }
@@ -31,6 +31,55 @@ if (window.location.pathname == "/search") {
     });
 }
 
+if (window.location.pathname.indexOf("/search") > -1 || window.location.pathname == "/favorites") {
+    const favoriteBtns = document.querySelectorAll('.fa-star');
+
+    favoriteBtns.forEach((favoriteBtn) => {
+        const source = favoriteBtn.dataset.source;
+        const title = favoriteBtn.dataset.title;
+        const url = favoriteBtn.dataset.url;
+        const image = favoriteBtn.dataset.image;
+        const channel = favoriteBtn.dataset.channel;
+        const likes = favoriteBtn.dataset.likes;
+
+        favoriteBtn.addEventListener('click', async function (e) {
+            e.preventDefault();
+            if (favoriteBtn.classList.contains('far')) {
+                const response = await fetch("/api/favorite", {
+                    method: "POST",
+                    body: JSON.stringify({ source, title, url, image, channel, likes }),
+                    headers: { "Content-Type": "application/json" },
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    favoriteBtn.setAttribute("data-favid", data.id);
+                    favoriteBtn.classList.remove('far');
+                    favoriteBtn.classList.add('fas');
+                }
+                else {
+                    console.log("Could not add to favorites");
+                }
+            }
+            else {
+                const id = favoriteBtn.dataset.favid;
+                const response = await fetch("/api/favorite/" + id, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                });
+                if (response.ok) {
+                    if (window.location.pathname == "/favorites") {
+                        favoriteBtn.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                    }
+                    favoriteBtn.classList.remove('fas');
+                    favoriteBtn.classList.add('far');
+                }
+                else {
+                    console.log("Could not delete favorite");
+                }
+            }
+        });
+    });
+}
 // Following is to run the code-editor
 if (window.location.pathname == "/code-editor") {
     // Initial data

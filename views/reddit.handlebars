@@ -9,8 +9,13 @@
           <div class="card-body">
             <h5 class="card-title">{{post.data.title}}</h5>
           </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">Likes: {{post.data.ups}}</li>
+          </ul>
           <div class="card-footer">
-            <h6 class="card-subtitle mb-2 text-muted">Upvotes: {{post.data.ups}}</h6>
+            <div class="card-text text-center">
+              <i class="{{#if post.favoriteId}}fas{{else}}far{{/if}} fa-star" data-favid="{{post.favoriteId}}" data-source="reddit" data-url="https://www.reddit.com{{post.data.permalink}}" data-title="{{post.data.title}}" data-likes="{{post.data.ups}}"></i>
+            </div>
           </div>
         </div>
       </a>

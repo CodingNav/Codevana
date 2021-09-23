@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const searchAPI = require('../util/searchAPI');
+const searchAPI = require('../../util/searchAPI');
 
 router.get('/youtube', async (req, res) => {
     try {

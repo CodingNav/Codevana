@@ -31,13 +31,14 @@ Favorite.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        upvotes: {
+        likes: {
             type: DataTypes.INTEGER,
             allowNull: true,
         },
         // Foreign Key
         user_id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id',
