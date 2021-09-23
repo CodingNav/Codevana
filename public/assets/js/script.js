@@ -66,7 +66,7 @@ if (window.location.pathname.indexOf("/search") > -1 || window.location.pathname
                 });
                 if (response.ok) {
                     if (window.location.pathname == "/favorites") {
-                        favoriteBtn.parentElement.parentElement.parentElement.remove();
+                        favoriteBtn.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
                     }
                     favoriteBtn.classList.remove('fas');
                     favoriteBtn.classList.add('far');
