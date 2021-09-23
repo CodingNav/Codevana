@@ -51,6 +51,8 @@ if (window.location.pathname.indexOf("/search") > -1 || window.location.pathname
                     headers: { "Content-Type": "application/json" },
                 });
                 if (response.ok) {
+                    const data = await response.json();
+                    favoriteBtn.setAttribute("data-favid", data.id);
                     favoriteBtn.classList.remove('far');
                     favoriteBtn.classList.add('fas');
                 }

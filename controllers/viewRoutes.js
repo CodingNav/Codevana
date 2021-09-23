@@ -9,8 +9,8 @@ router.get('/', async (req, res) => {
 router.get('/search', async (req, res) => {
     try {
         let videos = await searchAPI.searchYoutube(req.query.search, 5);
-        const redditPosts = await searchAPI.searchReddit(req.query.search, 5);
-        const stackPosts = await searchAPI.searchStackOverflow(req.query.search, 5);
+        let redditPosts = await searchAPI.searchReddit(req.query.search, 5);
+        let stackPosts = await searchAPI.searchStackOverflow(req.query.search, 5);
         let favoriteData = await Favorite.findAll({ where: { user_id: req.session.user_id } });
 
         favoriteData = favoriteData.map((obj) => {
@@ -19,13 +19,30 @@ router.get('/search', async (req, res) => {
         videos = videos.map((obj) => {
             const foundFav = favoriteData.find((favObj) => {
                 return favObj.url == "https://www.youtube.com/watch?v=" + obj.id.videoId;
-            })
+            });
             if (foundFav != null) {
                 obj.favoriteId = foundFav.id;
             }
             return obj;
         });
-        
+        stackPosts = stackPosts.map((obj) => {
+            const foundFav = favoriteData.find((favObj) => {
+                return favObj.url == obj.link;
+            });
+            if (foundFav != null) {
+                obj.favoriteId = foundFav.id;
+            }
+            return obj;
+        });
+        redditPosts = redditPosts.map((obj) => {
+            const foundFav = favoriteData.find((favObj) => {
+                return favObj.url == "https://www.reddit.com" + obj.data.permalink;
+            });
+            if (foundFav != null) {
+                obj.favoriteId = foundFav.id;
+            }
+            return obj;
+        });
 
         res.render('search', { videos, redditPosts, stackPosts });
     } catch (err) {
