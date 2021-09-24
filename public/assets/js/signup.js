@@ -2,16 +2,14 @@
 const signupFormHandler = async (event) => {
     event.preventDefault();
 
-    const username = document.querySelector(".username-input").value.trim();
-    const email = document.querySelector(".email-input").value.trim();
-    const password = document.querySelector(".password-input").value.trim();
-    //new accounts by default are not admins
-    const is_admin = false;
+    const username = document.querySelector("#username").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#pass").value.trim();
 
     if (username && email && password) {
         const response = await fetch("/api/user", {
             method: "POST",
-            body: JSON.stringify({ username, email, password, is_admin }),
+            body: JSON.stringify({ username, email, password }),
             headers: { "Content-Type": "application/json" },
         });
         if (response.ok) {
@@ -31,5 +29,5 @@ const signupFormHandler = async (event) => {
 
 //add event listeners
 document
-    .querySelector(".signup-button")
+    .querySelector("#signup")
     .addEventListener("click", signupFormHandler);
