@@ -10,3 +10,7 @@ const logout = async () => {
 };
 
 logout();
+
+document
+.quertySelector("#logout")
+.addEventListener("click", logoutFormhandler)
